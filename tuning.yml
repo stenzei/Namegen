@@ -1,0 +1,19 @@
+trainingInput:
+  scaleTier: CUSTOM
+  masterType: standard_gpu
+  hyperparameters:
+    goal: MAXIMIZE
+    hyperparameterMetricTag: acc
+    maxTrials: 10
+    maxParallelTrials: 1
+    params:
+      - parameterName: layer_lstm_units
+        type: INTEGER
+        minValue: 100
+        maxValue: 200
+        scaleType: UNIT_LINEAR_SCALE
+      - parameterName: batch_size
+        type: INTEGER
+        minValue: 100
+        maxValue: 200
+        scaleType: UNIT_LINEAR_SCALE
