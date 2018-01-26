@@ -17,7 +17,8 @@ library(tokenizers)
 
 # Parameters -------------------------------------------------------------------
 
-# Hperparameters
+# Hperparameters. Using flags() allows to
+# vary these parameters using tuning.yml.
 FLAGS <- flags(
   flag_integer("maxlen", 40, "Length of, for learning considered, character 
                               sequences.  I.e. max length of generated names. 
@@ -146,8 +147,7 @@ optimizer <- optimizer_rmsprop(lr = FLAGS$learning_rate)
 # model for the following training.
 model %>% compile(
   loss = "categorical_crossentropy", 
-  optimizer = optimizer,
-  metrics = c('accuracy')
+  optimizer = optimizer
 )
 
 
@@ -161,7 +161,7 @@ model %>% fit(
 ) -> history                      # keep track of the model history
 
 
-# Prediction -------------------------------------------------------------------
+# Generation -------------------------------------------------------------------
 
 # Helper function to compute an index of the unique_chars
 # vector to find the next character, which then is appended
