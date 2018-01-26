@@ -10,7 +10,7 @@ gcloud_init()
 # the Google Cloud Machine Learning Engine API has 
 # to be activated. 
 # Training takes place on a standard GPU (Tesla K80 GPU)
-job <- cloudml_train("namegen.R", config = "tuning.yml")
+job <- cloudml_train("namegen.R")
 
 # View the status of the job.
 job_status(job)
@@ -20,7 +20,6 @@ job_collect(job)
 
 # Show training runs.
 runs <- ls_runs()
-str(runs)
 
 # view the latest run
 view_run()
